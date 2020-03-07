@@ -1,0 +1,30 @@
+web_article_post_index:
+    methods: [GET]
+    path: article
+    controller: PhpBundle\Article\Symfony\Web\Controllers\ArticleController::index
+
+web_article_post_create:
+    path: article/create
+    methods: [GET,POST]
+    controller: PhpBundle\Article\Symfony\Web\Controllers\ArticleController::create
+
+web_article_post_view:
+    methods: [GET]
+    path: article/view/{id}
+    controller: PhpBundle\Article\Symfony\Web\Controllers\ArticleController::view
+    requirements:
+        id: '\d+'
+
+web_article_post_update:
+    methods: [GET,POST]
+    path: article/update/{id}
+    controller: PhpBundle\Article\Symfony\Web\Controllers\ArticleController::update
+    requirements:
+        id: '\d+'
+
+web_article_post_delete:
+    methods: [POST]
+    path: article/delete/{id}
+    controller: PhpBundle\Article\Symfony\Web\Controllers\ArticleController::delete
+    requirements:
+        id: '\d+'
