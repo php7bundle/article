@@ -15,7 +15,7 @@ class m_2014_10_12_200000_create_post_table extends BaseCreateTableMigration
     public function tableSchema()
     {
         return function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
+            $table->integer('id')->autoIncrement()->comment('Идентификатор');
             $table->integer('category_id')->comment('ID категории');
             $table->string('title')->comment('Заголовок статьи');
             $table->dateTime('created_at');

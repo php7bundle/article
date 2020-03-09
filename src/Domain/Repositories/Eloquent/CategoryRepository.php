@@ -2,9 +2,9 @@
 
 namespace PhpBundle\Article\Domain\Repositories\Eloquent;
 
-use PhpLab\Eloquent\Db\Base\BaseEloquentCrudRepository;
 use PhpBundle\Article\Domain\Entities\CategoryEntity;
 use PhpBundle\Article\Domain\Interfaces\CategoryRepositoryInterface;
+use PhpLab\Eloquent\Db\Base\BaseEloquentCrudRepository;
 
 class CategoryRepository extends BaseEloquentCrudRepository implements CategoryRepositoryInterface
 {

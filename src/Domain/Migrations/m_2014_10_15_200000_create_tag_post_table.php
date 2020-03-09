@@ -15,7 +15,7 @@ class m_2014_10_15_200000_create_tag_post_table extends BaseCreateTableMigration
     public function tableSchema()
     {
         return function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
+            $table->integer('id')->autoIncrement()->comment('Идентификатор');
             $table->integer('tag_id')->comment('ID тэга');
             $table->integer('post_id')->comment('ID поста');
             $table
