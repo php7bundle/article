@@ -6,8 +6,7 @@ use DateTime;
 use Illuminate\Support\Collection;
 use PhpLab\Core\Domain\Interfaces\Entity\EntityIdInterface;
 use PhpLab\Core\Domain\Interfaces\Entity\ValidateEntityInterface;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints;
 
 class PostEntity implements ValidateEntityInterface, EntityIdInterface
 {
@@ -89,11 +88,11 @@ class PostEntity implements ValidateEntityInterface, EntityIdInterface
     {
         return [
             'title' => [
-                new Length(['min' => 3]),
-                new NotBlank,
+                new Constraints\Length(['min' => 3]),
+                new Constraints\NotBlank,
             ],
             'created_at' => [
-                new \Symfony\Component\Validator\Constraints\DateTime,
+                new Constraints\DateTime,
             ],
         ];
     }

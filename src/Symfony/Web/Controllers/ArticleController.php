@@ -2,9 +2,11 @@
 
 namespace PhpBundle\Article\Symfony\Web\Controllers;
 
+use PhpLab\Core\Domain\Entities\DataProviderEntity;
 use PhpLab\Core\Domain\Helpers\QueryHelper;
 use PhpLab\Core\Domain\Libs\DataProvider;
 use PhpLab\Core\Domain\Libs\Query;
+use PhpLab\Core\Legacy\Yii\Helpers\ArrayHelper;
 use PhpLab\Rest\Web\Controller\BaseCrudWebController;
 use PhpBundle\Article\Domain\Interfaces\PostServiceInterface;
 use PhpBundle\Notify\Domain\Enums\FlashMessageTypeEnum;
@@ -30,12 +32,10 @@ class ArticleController extends AbstractController
         $query = QueryHelper::getAllParams($request->query->all());
         $query->with('category');
 
-        $dataProvider = new DataProvider([
-            'service' => $this->service,
-            'query' => $query,
-            'page' => $request->get("page", 1),
-            'pageSize' => $request->get("per-page", 10),
-        ]);
+        $page = $request->get("page", 1);
+        $pageSize = $request->get("per-page", 10);
+        $dataProvider = new DataProvider($this->service, $query, $page, $pageSize);
+
         return $this->render('@Article/post/index.html.twig', [
             'dataProviderEntity' => $dataProvider->getAll(),
         ]);
